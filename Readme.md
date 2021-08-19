@@ -1,3 +1,3 @@
 ## Coinconverter v0.0.1
 
-Usage: amount(float) currency currency_to_convert. Example: 100.51 USD BTC
+Usage: go run ./cmd/main.go amount(float) currency currency_to_convert. Example: go run ./cmd/main.go 100.51 USD BTC
