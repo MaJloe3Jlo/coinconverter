@@ -22,10 +22,10 @@ type quote struct {
 
 func (c *CoinmarketData) validate() error {
 	if c.Status == nil {
-		return errors.New("missing status")
+		return errors.New("Cannot find status in response")
 	}
 	if c.Data == nil {
-		return errors.New("missing data")
+		return errors.New("Cannot find data in response")
 	}
 	return nil
 }

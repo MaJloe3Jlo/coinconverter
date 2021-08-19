@@ -32,13 +32,13 @@ func (c *Client) Convert(ctx context.Context, data domain.InputData) (string, er
 
 	respBody, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
-		return "", fmt.Errorf("ioutil.ReadAll: %w", err)
+		return "", fmt.Errorf("Response read failed. Reason: %w", err)
 	}
 
 	var price CoinmarketData
 	err = json.Unmarshal(respBody, &price)
 	if err != nil {
-		return "", fmt.Errorf("json.Unmarshal: %w", err)
+		return "", fmt.Errorf("Unmarshall data failed. Reason: %w", err)
 	}
 
 	if err := price.validate(); err != nil {
