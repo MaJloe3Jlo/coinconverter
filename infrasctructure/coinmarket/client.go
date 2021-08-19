@@ -18,12 +18,6 @@ func New(httpClient *http.Client) *Client {
 	return &Client{httpClient: httpClient}
 }
 
-const (
-	host   = "sandbox-api.coinmarketcap.com"
-	apiKey = "b54bcf4d-1bca-4e8e-9a24-22ff2c3d462c"
-	path   = "/v1/tools/price-conversion"
-)
-
 func (c *Client) Convert(ctx context.Context, data domain.InputData) (string, error) {
 	req, err := request(ctx, data)
 	if err != nil {
