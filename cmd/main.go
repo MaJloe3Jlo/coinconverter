@@ -11,7 +11,7 @@ import (
 
 	"github.com/MaJloe3Jlo/coinconverter/domain"
 	"github.com/MaJloe3Jlo/coinconverter/infrasctructure/coinmarket"
-	"github.com/MaJloe3Jlo/coinconverter/infrasctructure/convert"
+	"github.com/MaJloe3Jlo/coinconverter/usecase"
 )
 
 func main() {
@@ -39,9 +39,10 @@ func main() {
 
 	coinMarket := coinmarket.New(httpClient)
 
-	converter := convert.New(coinMarket)
+	converter := usecase.New(coinMarket)
+	plusCommission := usecase.NewComission(1.15, converter)
 
-	result, err := converter.Convert(context.Background(), domain.InputData{Amount: amountString, Currency: currency, CurrencyToConvert: currencyToConvert})
+	result, err := plusCommission.Convert(context.Background(), domain.InputData{Amount: amountString, Currency: currency, CurrencyToConvert: currencyToConvert})
 	if err != nil {
 		log.Fatalf("Convertation failed. Reason: %v", err)
 	}

@@ -8,11 +8,14 @@ import (
 	"net/http"
 
 	"github.com/MaJloe3Jlo/coinconverter/domain"
+	"github.com/MaJloe3Jlo/coinconverter/usecase"
 )
 
 type Client struct {
 	httpClient *http.Client
 }
+
+var _ usecase.Client = (*Client)(nil)
 
 func New(httpClient *http.Client) *Client {
 	return &Client{httpClient: httpClient}
